@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://buimtmnaew8yu"]
+
+[ext_resource type="PackedScene" uid="uid://bh2smrfcpl0ie" path="res://rope_segment.tscn" id="1_d2syw"]
+
+[node name="Rope" type="Node3D"]
+
+[node name="RopeSegment" parent="." instance=ExtResource("1_d2syw")]
+
+[node name="PinJoint3D" type="PinJoint3D" parent="."]
+node_a = NodePath("../RopeSegment")
+node_b = NodePath("../RopeSegment2")
+
+[node name="RopeSegment2" parent="." instance=ExtResource("1_d2syw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39109, 0, 0)
+
+[node name="PinJoint3D2" type="PinJoint3D" parent="."]
+node_a = NodePath("../RopeSegment2")
+node_b = NodePath("../RopeSegment3")
+
+[node name="RopeSegment3" parent="." instance=ExtResource("1_d2syw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78667, 0, 0)
+
+[node name="PinJoint3D3" type="PinJoint3D" parent="."]
+node_a = NodePath("../RopeSegment3")
+node_b = NodePath("../RopeSegment4")
+
+[node name="RopeSegment4" parent="." instance=ExtResource("1_d2syw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.18467, 0, 0)

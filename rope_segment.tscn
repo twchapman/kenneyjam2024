@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh2smrfcpl0ie"]
+
+[ext_resource type="Script" path="res://Survival Kit/rope_segment.gd" id="1_wtngf"]
+[ext_resource type="PackedScene" uid="uid://dhxjy63y8ocxq" path="res://Survival Kit/bedroll-packed.glb" id="2_t5klf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jyl7l"]
+radius = 0.216574
+height = 1.303
+
+[node name="RopeSegment" type="RigidBody3D"]
+gravity_scale = 0.0
+script = ExtResource("1_wtngf")
+
+[node name="bedroll-packed2" parent="." instance=ExtResource("2_t5klf")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.218973, 0)
+shape = SubResource("CapsuleShape3D_jyl7l")
