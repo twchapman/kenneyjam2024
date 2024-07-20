@@ -26,7 +26,7 @@ axis_lock_angular_z = true
 mass = 1000.0
 linear_damp = 25.714
 script = ExtResource("2_lbvub")
-ropeSegments = [NodePath(""), NodePath(""), NodePath("")]
+ropeSegments = [null, null, null]
 
 [node name="boat-tow-a2" parent="Tugboat" instance=ExtResource("2_ofgk4")]
 transform = Transform3D(1, -5.48631e-05, -0.000104276, 5.48631e-05, 1, 0.000151576, 0.000104276, -0.000151576, 1, 0, 0, 5)

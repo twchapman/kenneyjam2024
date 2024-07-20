@@ -19,15 +19,16 @@ height = 14.3135
 [node name="water2" parent="." instance=ExtResource("1_iv4fo")]
 transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
 
-[node name="Tugboat" type="RigidBody3D" parent="." node_paths=PackedStringArray("ropeSegments")]
+[node name="Tugboat" type="RigidBody3D" parent="." node_paths=PackedStringArray("ropeSegments", "camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.7538)
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-mass = 1000.0
+mass = 10.0
 linear_damp = 25.714
 script = ExtResource("2_ej5gx")
 ropeSegments = [NodePath("../RopeSegment"), NodePath("../RopeSegment2"), NodePath("../RopeSegment3")]
+camera = NodePath("../Camera3D")
 
 [node name="boat-tow-a2" parent="Tugboat" instance=ExtResource("3_fbiwj")]
 transform = Transform3D(1, -5.48631e-05, -0.000104276, 5.48631e-05, 1, 0.000151576, 0.000104276, -0.000151576, 1, 0, 0, 5)
@@ -36,76 +37,110 @@ transform = Transform3D(1, -5.48631e-05, -0.000104276, 5.48631e-05, 1, 0.0001515
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.41546, 4.90386)
 shape = SubResource("CapsuleShape3D_tnbjd")
 
-[node name="PinJoint3D" type="PinJoint3D" parent="."]
+[node name="PinJoint3D" type="Generic6DOFJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3702, 13.8241)
 node_a = NodePath("../Tugboat")
 node_b = NodePath("../RopeSegment")
-params/bias = 0.01
-params/damping = 0.01
-params/impulse_clamp = 1.0
+linear_limit_z/upper_distance = 0.5
+linear_limit_z/lower_distance = 0.05
+linear_limit_z/softness = 1.0
+linear_limit_z/restitution = 1.0
+linear_spring_z/enabled = true
+angular_limit_x/enabled = false
+angular_limit_x/upper_angle = 0.610865
+angular_limit_y/upper_angle = 0.785398
 
 [node name="RopeSegment" parent="." instance=ExtResource("4_mcav3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.15143, 13.1443)
+axis_lock_angular_z = true
 
-[node name="PinJoint3D2" type="PinJoint3D" parent="."]
+[node name="PinJoint3D2" type="Generic6DOFJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37, 12.483)
 node_a = NodePath("../RopeSegment")
 node_b = NodePath("../RopeSegment2")
-params/bias = 0.01
-params/damping = 0.01
-params/impulse_clamp = 1.0
+linear_limit_z/upper_distance = 0.5
+linear_limit_z/lower_distance = 0.05
+linear_limit_z/softness = 1.0
+linear_limit_z/restitution = 1.0
+linear_spring_z/enabled = true
+angular_limit_x/enabled = false
+angular_limit_x/upper_angle = 0.610865
+angular_limit_y/upper_angle = 0.785398
 
 [node name="RopeSegment2" parent="." instance=ExtResource("4_mcav3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.15143, 11.8229)
+axis_lock_angular_z = true
 
-[node name="PinJoint3D3" type="PinJoint3D" parent="."]
+[node name="PinJoint3D3" type="Generic6DOFJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37, 11.1531)
 node_a = NodePath("../RopeSegment2")
 node_b = NodePath("../RopeSegment3")
-params/bias = 0.01
-params/damping = 0.01
-params/impulse_clamp = 1.0
+linear_limit_z/upper_distance = 0.5
+linear_limit_z/lower_distance = 0.05
+linear_limit_z/softness = 1.0
+linear_limit_z/restitution = 1.0
+linear_spring_z/enabled = true
+angular_limit_x/enabled = false
+angular_limit_x/upper_angle = 0.610865
+angular_limit_y/upper_angle = 0.785398
 
 [node name="RopeSegment3" parent="." instance=ExtResource("4_mcav3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.15143, 10.5034)
+axis_lock_angular_z = true
 
-[node name="PinJoint3D4" type="PinJoint3D" parent="."]
+[node name="PinJoint3D4" type="Generic6DOFJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37, 9.82353)
 node_a = NodePath("../RopeSegment3")
 node_b = NodePath("../RopeSegment4")
-params/bias = 0.01
-params/damping = 0.01
-params/impulse_clamp = 1.0
+linear_limit_z/upper_distance = 0.5
+linear_limit_z/lower_distance = 0.05
+linear_limit_z/softness = 1.0
+linear_limit_z/restitution = 1.0
+linear_spring_z/enabled = true
+angular_limit_x/enabled = false
+angular_limit_x/upper_angle = 0.610865
+angular_limit_y/upper_angle = 0.785398
 
 [node name="RopeSegment4" parent="." instance=ExtResource("4_mcav3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.15143, 9.17381)
+axis_lock_angular_z = true
 
-[node name="PinJoint3D6" type="PinJoint3D" parent="."]
+[node name="PinJoint3D6" type="Generic6DOFJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37, 8.47865)
 node_a = NodePath("../RopeSegment4")
 node_b = NodePath("../RopeSegment5")
-params/bias = 0.01
-params/damping = 0.01
-params/impulse_clamp = 1.0
+linear_limit_z/upper_distance = 0.5
+linear_limit_z/lower_distance = 0.05
+linear_limit_z/softness = 1.0
+linear_limit_z/restitution = 1.0
+linear_spring_z/enabled = true
+angular_limit_x/enabled = false
+angular_limit_x/upper_angle = 0.610865
+angular_limit_y/upper_angle = 0.785398
 
 [node name="RopeSegment5" parent="." instance=ExtResource("4_mcav3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.15143, 7.82894)
+axis_lock_angular_z = true
 
-[node name="PinJoint3D5" type="PinJoint3D" parent="."]
+[node name="PinJoint3D5" type="Generic6DOFJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37, 7.08004)
 node_a = NodePath("../RopeSegment5")
 node_b = NodePath("../TuggedBoat")
-params/bias = 0.01
-params/damping = 0.01
-params/impulse_clamp = 1.0
+linear_limit_z/upper_distance = 0.5
+linear_limit_z/lower_distance = 0.05
+linear_limit_z/softness = 1.0
+linear_limit_z/restitution = 1.0
+linear_spring_z/enabled = true
+angular_limit_x/enabled = false
+angular_limit_x/upper_angle = 0.610865
+angular_limit_y/upper_angle = 0.785398
 
 [node name="TuggedBoat" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 axis_lock_linear_y = true
 axis_lock_angular_x = true
-axis_lock_angular_y = true
 axis_lock_angular_z = true
-mass = 50000.0
+mass = 50.0
 gravity_scale = 0.0
 inertia = Vector3(0, 500, 0)
 
@@ -117,7 +152,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.4
 shape = SubResource("CapsuleShape3D_joc0k")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.0234882, -0.811931, 0.583281, -0.0326691, 0.583754, 0.811273, -0.99919, 6.89737e-08, -0.0402364, 16.3542, 16.9674, -0.566861)
+transform = Transform3D(-0.0234882, -0.811931, 0.583281, -0.0326691, 0.583754, 0.811273, -0.99919, 8.01556e-08, -0.0402364, 16.3542, 19.1641, 15.7495)
 
 [node name="Container" type="Control" parent="Camera3D"]
 visible = false
