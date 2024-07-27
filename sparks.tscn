@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bemu6ilbngfgu"]
+
+[ext_resource type="Script" path="res://sparks.gd" id="1_hph3e"]
+[ext_resource type="Texture2D" uid="uid://0bxcasofksrg" path="res://Particle Pack/PNG (Transparent)/magic_03.png" id="2_dxtbm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnuip"]
+transparency = 1
+albedo_color = Color(1, 1, 0, 1)
+albedo_texture = ExtResource("2_dxtbm")
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ari7a"]
+material = SubResource("StandardMaterial3D_pnuip")
+size = Vector2(2, 2)
+
+[node name="Smoke" type="Node3D"]
+script = ExtResource("1_hph3e")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 10
+lifetime = 2.0
+mesh = SubResource("QuadMesh_ari7a")
+gravity = Vector3(0, 0, 0)
+angular_velocity_min = -38.71
+angular_velocity_max = 38.71
+scale_amount_min = 0.75
+scale_amount_max = 1.5
