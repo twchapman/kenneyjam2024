@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv25k3vomywx3"]
+
+[ext_resource type="PackedScene" uid="uid://dge2euwa8heox" path="res://Hexagon Kit/Models/GLB format/sand.glb" id="1_ess3d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6md6w"]
+size = Vector3(1, 1, 0.566772)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-10, 0, 17.3205, 0, 20, 0, -17.3205, 0, -10, 0, 0, 0)
+shape = SubResource("BoxShape3D_6md6w")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(10, 0, 17.3205, 0, 20, 0, -17.3205, 0, 10, 0, 0, 0)
+shape = SubResource("BoxShape3D_6md6w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("BoxShape3D_6md6w")
+
+[node name="sand2" parent="." instance=ExtResource("1_ess3d")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
