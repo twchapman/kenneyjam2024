@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpoui0n5xut27"]
+
+[ext_resource type="PackedScene" uid="uid://dtuau52bsqoy8" path="res://Hexagon Kit/Models/GLB format/water.glb" id="1_1q06m"]
+[ext_resource type="PackedScene" uid="uid://bv25k3vomywx3" path="res://sandbar.tscn" id="2_0kwde"]
+
+[node name="canal" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.67875, 0)
+
+[node name="water2" parent="." instance=ExtResource("1_1q06m")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="water4" parent="." instance=ExtResource("1_1q06m")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 19.982, 0, 0)
+
+[node name="water5" parent="." instance=ExtResource("1_1q06m")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 10.0724, 0, 17.1949)
+
+[node name="water7" parent="." instance=ExtResource("1_1q06m")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 9.90055, 0, -17.1029)
+
+[node name="Sandbar" parent="." instance=ExtResource("2_0kwde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1023, 0, -17.3903)
+
+[node name="Sandbar2" parent="." instance=ExtResource("2_0kwde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.0672, 0, -0.0678406)
+
+[node name="Sandbar3" parent="." instance=ExtResource("2_0kwde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1572, 0.00300598, 17.3011)
