@@ -8,6 +8,8 @@ var can_spark = true
 var sparktimer = 1
 var sparktimerleft = sparktimer
 
+@export var collision_sound: Array[AudioStream] = []
+
 signal on_collision
 
 func _ready():
@@ -40,3 +42,7 @@ func _on_body_entered(body: Node):
 			smoke.position = point
 			get_tree().root.add_child(smoke)
 			on_collision.emit()
+			var random_index = randi_range(0, collision_sound.size() - 1)
+			$AudioStreamPlayer.stream = collision_sound[random_index]
+			$AudioStreamPlayer.pitch_scale = randf_range(0.8, 1.2)
+			$AudioStreamPlayer.play()

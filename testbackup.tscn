@@ -1,6 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://dks0fcof2v7fn"]
+[gd_scene load_steps=43 format=3 uid="uid://dks0fcof2v7fn"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_babtc"]
+[ext_resource type="AudioStream" uid="uid://d4ikhbelstvlc" path="res://Sounds/go.ogg" id="2_6jpl0"]
+[ext_resource type="AudioStream" uid="uid://bxr6xxu51mrpg" path="res://Sounds/congratulations.ogg" id="2_50v1m"]
 [ext_resource type="Script" path="res://Tugboat.gd" id="2_ej5gx"]
 [ext_resource type="Texture2D" uid="uid://dqixg3cse6g1c" path="res://Particle Pack/PNG (Transparent)/smoke_04.png" id="3_3py7j"]
 [ext_resource type="PackedScene" uid="uid://cmdb8cn47pxrp" path="res://Watercraft Pack/Models/GLB format/boat-tow-a.glb" id="3_fbiwj"]
@@ -8,12 +10,27 @@
 [ext_resource type="PackedScene" uid="uid://cgbvvtnvwljyp" path="res://Watercraft Pack/Models/GLB format/ship-ocean-liner-small.glb" id="5_vgudx"]
 [ext_resource type="Script" path="res://TuggedBoat.gd" id="6_5xcmv"]
 [ext_resource type="FontFile" uid="uid://c5th0dsswd1uk" path="res://Fonts/Kenney Future Narrow.ttf" id="7_tdrx3"]
+[ext_resource type="AudioStream" uid="uid://b71t8r5qxv7sq" path="res://Sounds/stoneDrag1.ogg" id="7_y3ab8"]
+[ext_resource type="AudioStream" uid="uid://ctxu0tiuw5emk" path="res://Sounds/stoneDrag2.ogg" id="8_85hyp"]
 [ext_resource type="Script" path="res://Title.gd" id="8_oj3br"]
+[ext_resource type="AudioStream" uid="uid://cuvw2ycq2nbbe" path="res://Sounds/stoneDrag3.ogg" id="9_13qau"]
 [ext_resource type="FontFile" uid="uid://b2qtep6gp6elo" path="res://Fonts/Kenney Future Square.ttf" id="9_gy023"]
+[ext_resource type="PackedScene" uid="uid://o875uvv71jf1" path="res://Hexagon Kit/Models/GLB format/building-port.glb" id="9_ovc8h"]
+[ext_resource type="AudioStream" uid="uid://cdew6lqsjao38" path="res://Sounds/stoneDrag4.ogg" id="10_y4roi"]
+[ext_resource type="AudioStream" uid="uid://bbg1d6t8c1115" path="res://Sounds/rollover1.ogg" id="11_28dg5"]
+[ext_resource type="LabelSettings" uid="uid://c7kmyj7an1ne1" path="res://titlestyle.tres" id="11_bxgyf"]
 [ext_resource type="LabelSettings" uid="uid://cbcm4syfsihx6" path="res://labledefault.tres" id="14_putjk"]
+[ext_resource type="Texture2D" uid="uid://46o0l1k0h08h" path="res://UI Adventure Pack/PNG/panel_beigeLight.png" id="15_owy78"]
+[ext_resource type="LabelSettings" uid="uid://bx88ssdjxl87d" path="res://payout.tres" id="16_4whvy"]
 [ext_resource type="PackedScene" uid="uid://7vchmvftctvc" path="res://river_straight.tscn" id="16_mwgp1"]
 [ext_resource type="PackedScene" uid="uid://dipn2bv3d8awh" path="res://ship_oceanliner_goal.tscn" id="17_0jqep"]
 [ext_resource type="PackedScene" uid="uid://co50tywmlsoss" path="res://river_start_round.tscn" id="17_r01bk"]
+[ext_resource type="LabelSettings" uid="uid://dwkas8cobluo1" path="res://new_label_settings.tres" id="17_uyg8k"]
+[ext_resource type="AudioStream" uid="uid://c330lilclriat" path="res://Sounds/Flowing Rocks.ogg" id="19_fwgfy"]
+[ext_resource type="AudioStream" uid="uid://c3ikq3pff6ur0" path="res://Sounds/engineCircular_001.ogg" id="20_f73go"]
+[ext_resource type="PackedScene" uid="uid://4fgrqw2lsqvv" path="res://Hexagon Kit/Models/GLB format/grass.glb" id="28_g6ed8"]
+[ext_resource type="PackedScene" uid="uid://dtn1w42s4v4cm" path="res://Hexagon Kit/Models/GLB format/grass-hill.glb" id="29_w35hl"]
+[ext_resource type="PackedScene" uid="uid://bj07kywb4vr8x" path="res://Hexagon Kit/Models/GLB format/grass-forest.glb" id="30_1ids3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tnbjd"]
 radius = 1.31142
@@ -39,12 +56,6 @@ point_count = 2
 radius = 2.0
 height = 14.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_2xl37"]
-font = ExtResource("7_tdrx3")
-font_size = 60
-outline_size = 8
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_qwyy4"]
 font = ExtResource("9_gy023")
 font_size = 30
@@ -54,9 +65,33 @@ font = ExtResource("9_gy023")
 font_size = 30
 font_color = Color(0.643137, 0.109804, 0.0901961, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_y48c1"]
+font = ExtResource("7_tdrx3")
+font_size = 30
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yraab"]
+font = ExtResource("7_tdrx3")
+font_size = 30
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xf01q"]
+font = ExtResource("7_tdrx3")
+font_size = 30
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jk3ds"]
+font = ExtResource("7_tdrx3")
+font_size = 30
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Node3D" type="Node3D"]
 
-[node name="Game" type="Node3D" parent="." node_paths=PackedStringArray("StartUI", "GameUI", "timeGroup", "time", "damageGroup", "damageLabel", "TuggedBoat", "Goal_")]
+[node name="Game" type="Node3D" parent="." node_paths=PackedStringArray("StartUI", "GameUI", "timeGroup", "time", "damageGroup", "damageLabel", "TuggedBoat", "Goal_", "EndUI", "PayoutBase", "PayoutBonus", "PayoutDamage", "PayoutTotal", "PressAnyKeyToRestart")]
 script = ExtResource("1_babtc")
 StartUI = NodePath("../Camera3D/StartUI")
 GameUI = NodePath("../Camera3D/GameUI")
@@ -66,9 +101,17 @@ damageGroup = NodePath("../Camera3D/GameUI/Damage")
 damageLabel = NodePath("../Camera3D/GameUI/Damage/DamageDone")
 TuggedBoat = NodePath("TuggedBoat")
 Goal_ = NodePath("ShipOceanLinerGoal")
+EndUI = NodePath("../Camera3D/EndUI")
+PayoutBase = NodePath("../Camera3D/EndUI/TextureRect/BasePay")
+PayoutBonus = NodePath("../Camera3D/EndUI/TextureRect/TimeBonus")
+PayoutDamage = NodePath("../Camera3D/EndUI/TextureRect/Damages")
+PayoutTotal = NodePath("../Camera3D/EndUI/TextureRect/total")
+PressAnyKeyToRestart = NodePath("../Camera3D/EndUI/PressAnyKey")
+Go = ExtResource("2_6jpl0")
+Congrats = ExtResource("2_50v1m")
 
 [node name="Tugboat" type="RigidBody3D" parent="Game" node_paths=PackedStringArray("ropeSegments", "camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, -3.8147e-06, -7.57046)
+transform = Transform3D(0.998023, 0, -0.0628428, 0, 1, 0, 0.0628428, 0, 0.998023, 16.4341, -5.72205e-06, -3.68514)
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -116,8 +159,13 @@ angle_max = 112.5
 scale_amount_min = 0.25
 scale_amount_curve = SubResource("Curve_ysspx")
 
+[node name="MotorPlayer" type="AudioStreamPlayer" parent="Game/Tugboat"]
+stream = ExtResource("20_f73go")
+volume_db = -11.031
+bus = &"Motor"
+
 [node name="PinJoint3D" type="Generic6DOFJoint3D" parent="Game"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, 1.3702, -5.50016)
+transform = Transform3D(0.999276, 0, 0.038039, 0, 1, 0, -0.038039, 0, 0.999276, 16.4677, 1.3702, -1.77581)
 node_a = NodePath("../Tugboat")
 node_b = NodePath("../RopeSegment")
 linear_limit_z/upper_distance = 0.5
@@ -130,12 +178,12 @@ angular_limit_x/upper_angle = 0.610865
 angular_limit_y/upper_angle = 0.785398
 
 [node name="RopeSegment" parent="Game" instance=ExtResource("4_mcav3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.2052, 1.15143, -6.17996)
+transform = Transform3D(-0.038039, 0, 0.999276, 0, 1, 0, -0.999276, 0, -0.038039, 16.4418, 1.15143, -2.45512)
 freeze = true
 continuous_cd = true
 
 [node name="PinJoint3D2" type="Generic6DOFJoint3D" parent="Game"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, 1.37, -6.84126)
+transform = Transform3D(0.999276, 0, 0.038039, 0, 1, 0, -0.038039, 0, 0.999276, 16.4167, 1.37, -3.11594)
 node_a = NodePath("../RopeSegment")
 node_b = NodePath("../RopeSegment2")
 linear_limit_z/upper_distance = 0.5
@@ -148,12 +196,12 @@ angular_limit_x/upper_angle = 0.610865
 angular_limit_y/upper_angle = 0.785398
 
 [node name="RopeSegment2" parent="Game" instance=ExtResource("4_mcav3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.2052, 1.15143, -7.50136)
+transform = Transform3D(-0.038039, 0, 0.999276, 0, 1, 0, -0.999276, 0, -0.038039, 16.3916, 1.15143, -3.77556)
 freeze = true
 continuous_cd = true
 
 [node name="PinJoint3D3" type="Generic6DOFJoint3D" parent="Game"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, 1.37, -8.17116)
+transform = Transform3D(0.999276, 0, 0.038039, 0, 1, 0, -0.038039, 0, 0.999276, 16.3661, 1.37, -4.44488)
 node_a = NodePath("../RopeSegment2")
 node_b = NodePath("../RopeSegment3")
 linear_limit_z/upper_distance = 0.5
@@ -166,12 +214,12 @@ angular_limit_x/upper_angle = 0.610865
 angular_limit_y/upper_angle = 0.785398
 
 [node name="RopeSegment3" parent="Game" instance=ExtResource("4_mcav3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.2052, 1.15143, -8.82086)
+transform = Transform3D(-0.038039, 0, 0.999276, 0, 1, 0, -0.999276, 0, -0.038039, 16.3414, 1.15143, -5.09411)
 freeze = true
 continuous_cd = true
 
 [node name="PinJoint3D4" type="Generic6DOFJoint3D" parent="Game"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, 1.37, -9.50073)
+transform = Transform3D(0.999276, 0, 0.038039, 0, 1, 0, -0.038039, 0, 0.999276, 16.3155, 1.37, -5.77348)
 node_a = NodePath("../RopeSegment3")
 node_b = NodePath("../RopeSegment4")
 linear_limit_z/upper_distance = 0.5
@@ -184,12 +232,12 @@ angular_limit_x/upper_angle = 0.610865
 angular_limit_y/upper_angle = 0.785398
 
 [node name="RopeSegment4" parent="Game" instance=ExtResource("4_mcav3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.2052, 1.15143, -10.1504)
+transform = Transform3D(-0.038039, 0, 0.999276, 0, 1, 0, -0.999276, 0, -0.038039, 16.2908, 1.15143, -6.42268)
 freeze = true
 continuous_cd = true
 
 [node name="PinJoint3D6" type="Generic6DOFJoint3D" parent="Game"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, 1.37, -10.8456)
+transform = Transform3D(0.999276, 0, 0.038039, 0, 1, 0, -0.038039, 0, 0.999276, 16.2643, 1.37, -7.11738)
 node_a = NodePath("../RopeSegment4")
 node_b = NodePath("../RopeSegment5")
 linear_limit_z/upper_distance = 0.5
@@ -202,12 +250,12 @@ angular_limit_x/upper_angle = 0.610865
 angular_limit_y/upper_angle = 0.785398
 
 [node name="RopeSegment5" parent="Game" instance=ExtResource("4_mcav3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.2052, 1.15143, -11.4953)
+transform = Transform3D(-0.038039, 0, 0.999276, 0, 1, 0, -0.999276, 0, -0.038039, 16.2396, 1.15143, -7.76661)
 freeze = true
 continuous_cd = true
 
 [node name="PinJoint3D5" type="Generic6DOFJoint3D" parent="Game"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, 1.37, -12.2442)
+transform = Transform3D(0.999276, 0, 0.038039, 0, 1, 0, -0.038039, 0, 0.999276, 16.2111, 1.37, -8.51497)
 node_a = NodePath("../RopeSegment5")
 node_b = NodePath("../TuggedBoat")
 linear_limit_z/upper_distance = 0.5
@@ -220,7 +268,7 @@ angular_limit_x/upper_angle = 0.610865
 angular_limit_y/upper_angle = 0.785398
 
 [node name="TuggedBoat" type="RigidBody3D" parent="Game"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, -3.8147e-06, -17.3243)
+transform = Transform3D(0.996388, 0, 0.0849126, 0, 1, 0, -0.0849126, 0, 0.996388, 15.9387, -5.72205e-06, -13.7317)
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -231,6 +279,7 @@ freeze = true
 max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("6_5xcmv")
+collision_sound = Array[AudioStream]([ExtResource("7_y3ab8"), ExtResource("8_85hyp"), ExtResource("9_13qau"), ExtResource("10_y4roi")])
 
 [node name="ship-ocean-liner-small2" parent="Game/TuggedBoat" instance=ExtResource("5_vgudx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.02108)
@@ -238,6 +287,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.02108)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Game/TuggedBoat"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.44267, -1.55497)
 shape = SubResource("CapsuleShape3D_joc0k")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Game/TuggedBoat"]
+max_polyphony = 3
+bus = &"Collisions"
 
 [node name="RiverStartRound" parent="Game" instance=ExtResource("17_r01bk")]
 transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, 16.5, -4.5, -20.5)
@@ -257,8 +310,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9312, 0, 51.1087)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Game"]
 transform = Transform3D(0.0334331, -0.640069, 0.767589, 0.0278525, 0.768317, 0.639463, -0.999053, 1.8644e-09, 0.0435148, 54.9855, 46.023, 4.68169)
 
+[node name="PayoutAudio" type="AudioStreamPlayer" parent="Game"]
+stream = ExtResource("11_28dg5")
+bus = &"Payout"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Game"]
+stream = ExtResource("19_fwgfy")
+autoplay = true
+bus = &"Music"
+
+[node name="VoicePlayer" type="AudioStreamPlayer" parent="Game"]
+stream = ExtResource("2_6jpl0")
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.0234882, -0.811931, 0.583281, -0.0326691, 0.583754, 0.811273, -0.99919, 8.01587e-08, -0.0402364, 31.5594, 19.1641, -3.57476)
+transform = Transform3D(-0.0234882, -0.811931, 0.583281, -0.0326691, 0.583754, 0.811273, -0.99919, 8.01586e-08, -0.0402364, 32.4477, 19.1641, -6.99921)
 
 [node name="StartUI" type="Control" parent="Camera3D"]
 layout_mode = 3
@@ -276,7 +341,7 @@ offset_right = 1150.0
 offset_bottom = 284.0
 pivot_offset = Vector2(575, 142)
 text = "Tugboat Tumult"
-label_settings = SubResource("LabelSettings_2xl37")
+label_settings = ExtResource("11_bxgyf")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("8_oj3br")
@@ -342,7 +407,217 @@ text = "$0"
 label_settings = SubResource("LabelSettings_4qq0w")
 
 [node name="EndUI" type="Control" parent="Camera3D"]
+visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="NinePatchRect" parent="Camera3D/EndUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 6.0
+anchor_top = 2.0
+anchor_right = 22.0
+anchor_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_owy78")
+region_rect = Rect2(0, 0, 100, 100)
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
+
+[node name="Label" type="Label" parent="Camera3D/EndUI/TextureRect"]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 19.0
+offset_right = 448.0
+offset_bottom = 76.0
+text = "PAYOUT"
+label_settings = ExtResource("16_4whvy")
+
+[node name="Label2" type="Label" parent="Camera3D/EndUI/TextureRect"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 141.0
+offset_right = 531.0
+offset_bottom = 366.0
+text = "BASE pay
+time bonus
+
+(damages)
+
+------------------
+Total: "
+label_settings = ExtResource("17_uyg8k")
+
+[node name="BasePay" type="Label" parent="Camera3D/EndUI/TextureRect"]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 139.0
+offset_right = 531.0
+offset_bottom = 174.0
+text = "$0
+"
+label_settings = SubResource("LabelSettings_y48c1")
+horizontal_alignment = 2
+
+[node name="TimeBonus" type="Label" parent="Camera3D/EndUI/TextureRect"]
+offset_left = 346.0
+offset_top = 175.0
+offset_right = 531.0
+offset_bottom = 210.0
+text = "$0
+"
+label_settings = SubResource("LabelSettings_yraab")
+horizontal_alignment = 2
+
+[node name="Damages" type="Label" parent="Camera3D/EndUI/TextureRect"]
+offset_left = 342.0
+offset_top = 253.0
+offset_right = 531.0
+offset_bottom = 288.0
+text = "$0
+"
+label_settings = SubResource("LabelSettings_xf01q")
+horizontal_alignment = 2
+
+[node name="total" type="Label" parent="Camera3D/EndUI/TextureRect"]
+offset_left = 238.0
+offset_top = 365.0
+offset_right = 531.0
+offset_bottom = 400.0
+text = "$0
+"
+label_settings = SubResource("LabelSettings_jk3ds")
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="Camera3D/EndUI"]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 6.0
+offset_right = 778.0
+offset_bottom = 74.0
+text = "game over"
+label_settings = ExtResource("11_bxgyf")
+
+[node name="PressAnyKey" type="Label" parent="Camera3D/EndUI"]
+visible = false
+layout_mode = 0
+offset_left = 355.0
+offset_top = 576.0
+offset_right = 767.0
+offset_bottom = 611.0
+text = "press any key to restart"
+label_settings = ExtResource("14_putjk")
+
+[node name="grass2" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -9.44895, -4.5, 54.5)
+
+[node name="grass3" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -9.44895, -4.5, 24.5886)
+
+[node name="grass4" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -9.44895, -4.5, -5.34651)
+
+[node name="grass5" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -34.8895, -4.5, 39.4721)
+
+[node name="grass6" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -34.8895, -4.5, 9.56065)
+
+[node name="grass7" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -34.8895, -4.5, -20.3744)
+
+[node name="grass8" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -9.44895, -4.5, 84.3545)
+
+[node name="grass9" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -34.8895, -4.5, 69.3266)
+
+[node name="grass10" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -9.44895, -4.5, -35.2423)
+
+[node name="grass11" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -34.8895, -4.5, -50.2979)
+
+[node name="grass12" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -9.44895, -4.5, -65.1658)
+
+[node name="grass13" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -9.44895, -4.5, 114.051)
+
+[node name="grass14" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, -34.8895, -4.5, 99.0234)
+
+[node name="grass16" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, 16.0019, -4.5, 99.3915)
+
+[node name="grass15" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 42.008, -4.5, -5.43853)
+
+[node name="grass17" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 41.974, -4.5, 24.4729)
+
+[node name="grass18" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 41.9401, -4.5, 54.4079)
+
+[node name="grass19" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 67.4314, -4.5, 9.61824)
+
+[node name="grass20" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 67.3975, -4.5, 39.5297)
+
+[node name="grass21" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 67.3635, -4.5, 69.4647)
+
+[node name="grass22" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 42.0418, -4.5, -35.293)
+
+[node name="grass23" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 67.4653, -4.5, -20.2362)
+
+[node name="grass24" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 41.9061, -4.5, 84.3038)
+
+[node name="grass25" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 67.3296, -4.5, 99.3882)
+
+[node name="grass26" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 41.8722, -4.5, 114.227)
+
+[node name="grass27" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 42.0755, -4.5, -64.9898)
+
+[node name="grass28" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-0.0340351, 0, -30, 0, 30, 0, 30, 0, -0.0340351, 67.499, -4.5, -49.933)
+
+[node name="grass29" parent="." instance=ExtResource("28_g6ed8")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, 16.4959, -4.5, -49.5349)
+
+[node name="grass-hill2" parent="." instance=ExtResource("29_w35hl")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -9.09634, -4.5, -3.66945)
+
+[node name="grass-hill3" parent="." instance=ExtResource("29_w35hl")]
+transform = Transform3D(-20.8322, 0, -21.5875, 0, 30, 0, 21.5875, 0, -20.8322, -34.209, -4.5, 51.4936)
+
+[node name="grass-hill4" parent="." instance=ExtResource("29_w35hl")]
+transform = Transform3D(9.88034, 0, 28.3263, 0, 30, 0, -28.3263, 0, 9.88034, -21.7724, -4.5, 35.7123)
+
+[node name="grass-forest2" parent="." instance=ExtResource("30_1ids3")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -8.96708, -4.5, 62.2208)
+
+[node name="grass-forest3" parent="." instance=ExtResource("30_1ids3")]
+transform = Transform3D(-13.31, 0, 26.8858, 0, 30, 0, -26.8858, 0, -13.31, -24.3609, -4.5, -42.5134)
+
+[node name="building-port2" parent="." instance=ExtResource("9_ovc8h")]
+transform = Transform3D(-5.79267, 0, -8.15138, 0, 10, 0, 8.15138, 0, -5.79267, 14.1699, -0.505035, 76.8452)
+
+[connection signal="finished" from="Game/Tugboat/MotorPlayer" to="Game/Tugboat" method="_on_motor_player_finished"]
+[connection signal="finished" from="Game/MusicPlayer" to="Game" method="_on_music_player_finished"]
