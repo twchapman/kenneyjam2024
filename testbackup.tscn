@@ -373,12 +373,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Camera3D/GameUI/Time"]
+layout_mode = 0
 offset_right = 210.0
 offset_bottom = 35.0
 text = "Time Elapsed:"
 label_settings = ExtResource("14_putjk")
 
 [node name="Time" type="Label" parent="Camera3D/GameUI/Time"]
+layout_mode = 0
 offset_left = 220.0
 offset_right = 262.0
 offset_bottom = 35.0
@@ -470,6 +472,7 @@ label_settings = SubResource("LabelSettings_y48c1")
 horizontal_alignment = 2
 
 [node name="TimeBonus" type="Label" parent="Camera3D/EndUI/TextureRect"]
+layout_mode = 0
 offset_left = 346.0
 offset_top = 175.0
 offset_right = 531.0
@@ -480,6 +483,7 @@ label_settings = SubResource("LabelSettings_yraab")
 horizontal_alignment = 2
 
 [node name="Damages" type="Label" parent="Camera3D/EndUI/TextureRect"]
+layout_mode = 0
 offset_left = 342.0
 offset_top = 253.0
 offset_right = 531.0
@@ -490,6 +494,7 @@ label_settings = SubResource("LabelSettings_xf01q")
 horizontal_alignment = 2
 
 [node name="total" type="Label" parent="Camera3D/EndUI/TextureRect"]
+layout_mode = 0
 offset_left = 238.0
 offset_top = 365.0
 offset_right = 531.0

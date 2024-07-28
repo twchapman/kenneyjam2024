@@ -62,7 +62,7 @@ func _process(delta):
 				($PayoutAudio as AudioStreamPlayer).pitch_scale = 1 + (float(timeBonusDisplay) / float(timeBonus))
 				($PayoutAudio as AudioStreamPlayer).play()
 		elif damagesDisplay < damage:
-			if damagesDisplay > 1000:
+			if damagesDisplay > 10000:
 				damageIncrease = 100
 			elif damagesDisplay > 100:
 				damageIncrease = 10
