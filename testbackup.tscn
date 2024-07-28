@@ -1,51 +1,122 @@
-[gd_scene load_steps=19 format=3 uid="uid://dks0fcof2v7fn"]
+[gd_scene load_steps=23 format=3 uid="uid://dks0fcof2v7fn"]
 
+[ext_resource type="Script" path="res://Game.gd" id="1_babtc"]
 [ext_resource type="Script" path="res://Tugboat.gd" id="2_ej5gx"]
+[ext_resource type="Texture2D" uid="uid://dqixg3cse6g1c" path="res://Particle Pack/PNG (Transparent)/smoke_04.png" id="3_3py7j"]
 [ext_resource type="PackedScene" uid="uid://cmdb8cn47pxrp" path="res://Watercraft Pack/Models/GLB format/boat-tow-a.glb" id="3_fbiwj"]
 [ext_resource type="PackedScene" uid="uid://bh2smrfcpl0ie" path="res://rope_segment.tscn" id="4_mcav3"]
 [ext_resource type="PackedScene" uid="uid://cgbvvtnvwljyp" path="res://Watercraft Pack/Models/GLB format/ship-ocean-liner-small.glb" id="5_vgudx"]
 [ext_resource type="Script" path="res://TuggedBoat.gd" id="6_5xcmv"]
-[ext_resource type="PackedScene" uid="uid://cy47atpide78n" path="res://Hexagon Kit/Models/GLB format/river-intersectionA.glb" id="7_tfdlb"]
-[ext_resource type="PackedScene" uid="uid://b0dam783hyq6t" path="res://Hexagon Kit/Models/GLB format/river-intersectionB.glb" id="8_bolh0"]
-[ext_resource type="PackedScene" uid="uid://cygaqy8b8a0tj" path="res://Hexagon Kit/Models/GLB format/river-intersectionC.glb" id="9_8ntxa"]
-[ext_resource type="PackedScene" uid="uid://ba085t7850e21" path="res://Hexagon Kit/Models/GLB format/river-intersectionD.glb" id="10_mldvx"]
-[ext_resource type="PackedScene" uid="uid://l7mlcgsdtwqm" path="res://Hexagon Kit/Models/GLB format/river-intersectionE.glb" id="11_poxws"]
-[ext_resource type="PackedScene" uid="uid://bteerp138mssw" path="res://Hexagon Kit/Models/GLB format/river-intersectionF.glb" id="12_ghdph"]
-[ext_resource type="PackedScene" uid="uid://dqlmkuahpfl7w" path="res://Hexagon Kit/Models/GLB format/river-intersectionG.glb" id="13_1q5db"]
-[ext_resource type="PackedScene" uid="uid://dk2bnbg0uy356" path="res://Hexagon Kit/Models/GLB format/river-intersectionH.glb" id="14_xex5d"]
-[ext_resource type="PackedScene" uid="uid://cumdv3wgfqffg" path="res://Hexagon Kit/Models/GLB format/river-straight.glb" id="16_csd61"]
+[ext_resource type="FontFile" uid="uid://c5th0dsswd1uk" path="res://Fonts/Kenney Future Narrow.ttf" id="7_tdrx3"]
+[ext_resource type="Script" path="res://Title.gd" id="8_oj3br"]
+[ext_resource type="FontFile" uid="uid://b2qtep6gp6elo" path="res://Fonts/Kenney Future Square.ttf" id="9_gy023"]
+[ext_resource type="LabelSettings" uid="uid://cbcm4syfsihx6" path="res://labledefault.tres" id="14_putjk"]
 [ext_resource type="PackedScene" uid="uid://7vchmvftctvc" path="res://river_straight.tscn" id="16_mwgp1"]
+[ext_resource type="PackedScene" uid="uid://dipn2bv3d8awh" path="res://ship_oceanliner_goal.tscn" id="17_0jqep"]
 [ext_resource type="PackedScene" uid="uid://co50tywmlsoss" path="res://river_start_round.tscn" id="17_r01bk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tnbjd"]
 radius = 1.31142
 height = 5.59889
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn5eg"]
+transparency = 1
+albedo_color = Color(0.376471, 0.376471, 0.376471, 1)
+albedo_texture = ExtResource("3_3py7j")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_7gb3l"]
+material = SubResource("StandardMaterial3D_jn5eg")
+
+[sub_resource type="Curve" id="Curve_ysspx"]
+_data = [Vector2(0.366477, 0.502772), 0.0, 0.0, 0, 0, Vector2(0.826705, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_joc0k"]
-radius = 2.38843
-height = 14.3135
+radius = 2.0
+height = 14.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_2xl37"]
+font = ExtResource("7_tdrx3")
+font_size = 60
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qwyy4"]
+font = ExtResource("9_gy023")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_4qq0w"]
+font = ExtResource("9_gy023")
+font_size = 30
+font_color = Color(0.643137, 0.109804, 0.0901961, 1)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Tugboat" type="RigidBody3D" parent="." node_paths=PackedStringArray("ropeSegments", "camera")]
+[node name="Game" type="Node3D" parent="." node_paths=PackedStringArray("StartUI", "GameUI", "timeGroup", "time", "damageGroup", "damageLabel", "TuggedBoat", "Goal_")]
+script = ExtResource("1_babtc")
+StartUI = NodePath("../Camera3D/StartUI")
+GameUI = NodePath("../Camera3D/GameUI")
+timeGroup = NodePath("../Camera3D/GameUI/Time")
+time = NodePath("../Camera3D/GameUI/Time/Time")
+damageGroup = NodePath("../Camera3D/GameUI/Damage")
+damageLabel = NodePath("../Camera3D/GameUI/Damage/DamageDone")
+TuggedBoat = NodePath("TuggedBoat")
+Goal_ = NodePath("ShipOceanLinerGoal")
+
+[node name="Tugboat" type="RigidBody3D" parent="Game" node_paths=PackedStringArray("ropeSegments", "camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, -3.8147e-06, -7.57046)
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 10.0
+freeze = true
 linear_damp = 25.714
 script = ExtResource("2_ej5gx")
 ropeSegments = [NodePath("../RopeSegment"), NodePath("../RopeSegment2"), NodePath("../RopeSegment3")]
-camera = NodePath("../Camera3D")
+camera = NodePath("../../Camera3D")
 
-[node name="boat-tow-a2" parent="Tugboat" instance=ExtResource("3_fbiwj")]
+[node name="boat-tow-a2" parent="Game/Tugboat" instance=ExtResource("3_fbiwj")]
 transform = Transform3D(1, -5.48631e-05, -0.000104276, 5.48631e-05, 1, 0.000151576, 0.000104276, -0.000151576, 1, 0, 0, 5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tugboat"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Tugboat"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.41546, 4.90386)
 shape = SubResource("CapsuleShape3D_tnbjd")
 
-[node name="PinJoint3D" type="Generic6DOFJoint3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Game/Tugboat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.04901, 5.75935)
+amount = 20
+lifetime = 3.0
+randomness = 0.45
+lifetime_randomness = 0.25
+mesh = SubResource("QuadMesh_7gb3l")
+gravity = Vector3(0, 0.5, 0)
+angular_velocity_min = -38.71
+angular_velocity_max = 38.71
+angle_min = -171.5
+angle_max = 112.5
+scale_amount_min = 0.25
+scale_amount_curve = SubResource("Curve_ysspx")
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="Game/Tugboat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.06506, 3.8567)
+amount = 20
+lifetime = 3.0
+randomness = 0.45
+lifetime_randomness = 0.25
+mesh = SubResource("QuadMesh_7gb3l")
+gravity = Vector3(0, 0.5, 0)
+angular_velocity_min = -38.71
+angular_velocity_max = 38.71
+angle_min = -171.5
+angle_max = 112.5
+scale_amount_min = 0.25
+scale_amount_curve = SubResource("Curve_ysspx")
+
+[node name="PinJoint3D" type="Generic6DOFJoint3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, 1.3702, -5.50016)
 node_a = NodePath("../Tugboat")
 node_b = NodePath("../RopeSegment")
@@ -58,11 +129,12 @@ angular_limit_x/enabled = false
 angular_limit_x/upper_angle = 0.610865
 angular_limit_y/upper_angle = 0.785398
 
-[node name="RopeSegment" parent="." instance=ExtResource("4_mcav3")]
+[node name="RopeSegment" parent="Game" instance=ExtResource("4_mcav3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.2052, 1.15143, -6.17996)
+freeze = true
 continuous_cd = true
 
-[node name="PinJoint3D2" type="Generic6DOFJoint3D" parent="."]
+[node name="PinJoint3D2" type="Generic6DOFJoint3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, 1.37, -6.84126)
 node_a = NodePath("../RopeSegment")
 node_b = NodePath("../RopeSegment2")
@@ -75,11 +147,12 @@ angular_limit_x/enabled = false
 angular_limit_x/upper_angle = 0.610865
 angular_limit_y/upper_angle = 0.785398
 
-[node name="RopeSegment2" parent="." instance=ExtResource("4_mcav3")]
+[node name="RopeSegment2" parent="Game" instance=ExtResource("4_mcav3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.2052, 1.15143, -7.50136)
+freeze = true
 continuous_cd = true
 
-[node name="PinJoint3D3" type="Generic6DOFJoint3D" parent="."]
+[node name="PinJoint3D3" type="Generic6DOFJoint3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, 1.37, -8.17116)
 node_a = NodePath("../RopeSegment2")
 node_b = NodePath("../RopeSegment3")
@@ -92,11 +165,12 @@ angular_limit_x/enabled = false
 angular_limit_x/upper_angle = 0.610865
 angular_limit_y/upper_angle = 0.785398
 
-[node name="RopeSegment3" parent="." instance=ExtResource("4_mcav3")]
+[node name="RopeSegment3" parent="Game" instance=ExtResource("4_mcav3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.2052, 1.15143, -8.82086)
+freeze = true
 continuous_cd = true
 
-[node name="PinJoint3D4" type="Generic6DOFJoint3D" parent="."]
+[node name="PinJoint3D4" type="Generic6DOFJoint3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, 1.37, -9.50073)
 node_a = NodePath("../RopeSegment3")
 node_b = NodePath("../RopeSegment4")
@@ -109,11 +183,12 @@ angular_limit_x/enabled = false
 angular_limit_x/upper_angle = 0.610865
 angular_limit_y/upper_angle = 0.785398
 
-[node name="RopeSegment4" parent="." instance=ExtResource("4_mcav3")]
+[node name="RopeSegment4" parent="Game" instance=ExtResource("4_mcav3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.2052, 1.15143, -10.1504)
+freeze = true
 continuous_cd = true
 
-[node name="PinJoint3D6" type="Generic6DOFJoint3D" parent="."]
+[node name="PinJoint3D6" type="Generic6DOFJoint3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, 1.37, -10.8456)
 node_a = NodePath("../RopeSegment4")
 node_b = NodePath("../RopeSegment5")
@@ -126,11 +201,12 @@ angular_limit_x/enabled = false
 angular_limit_x/upper_angle = 0.610865
 angular_limit_y/upper_angle = 0.785398
 
-[node name="RopeSegment5" parent="." instance=ExtResource("4_mcav3")]
+[node name="RopeSegment5" parent="Game" instance=ExtResource("4_mcav3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.2052, 1.15143, -11.4953)
+freeze = true
 continuous_cd = true
 
-[node name="PinJoint3D5" type="Generic6DOFJoint3D" parent="."]
+[node name="PinJoint3D5" type="Generic6DOFJoint3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, 1.37, -12.2442)
 node_a = NodePath("../RopeSegment5")
 node_b = NodePath("../TuggedBoat")
@@ -143,7 +219,7 @@ angular_limit_x/enabled = false
 angular_limit_x/upper_angle = 0.610865
 angular_limit_y/upper_angle = 0.785398
 
-[node name="TuggedBoat" type="RigidBody3D" parent="."]
+[node name="TuggedBoat" type="RigidBody3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2052, -3.8147e-06, -17.3243)
 axis_lock_linear_y = true
 axis_lock_angular_x = true
@@ -151,75 +227,122 @@ axis_lock_angular_z = true
 mass = 50.0
 gravity_scale = 0.0
 inertia = Vector3(0, 500, 0)
+freeze = true
 max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("6_5xcmv")
 
-[node name="ship-ocean-liner-small2" parent="TuggedBoat" instance=ExtResource("5_vgudx")]
+[node name="ship-ocean-liner-small2" parent="Game/TuggedBoat" instance=ExtResource("5_vgudx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.02108)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TuggedBoat"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/TuggedBoat"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.44267, -1.55497)
 shape = SubResource("CapsuleShape3D_joc0k")
+
+[node name="RiverStartRound" parent="Game" instance=ExtResource("17_r01bk")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, 16.5, -4.5, -20.5)
+
+[node name="RiverStraight" parent="Game" instance=ExtResource("16_mwgp1")]
+transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, 16.5, -4.5, 9.5)
+
+[node name="RiverStraight2" parent="Game" instance=ExtResource("16_mwgp1")]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, 16.5, -4.5, 39.5)
+
+[node name="RiverStartRound2" parent="Game" instance=ExtResource("17_r01bk")]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, 16.5, -4.5, 69.5)
+
+[node name="ShipOceanLinerGoal" parent="Game" instance=ExtResource("17_0jqep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9312, 0, 51.1087)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Game"]
+transform = Transform3D(0.0334331, -0.640069, 0.767589, 0.0278525, 0.768317, 0.639463, -0.999053, 1.8644e-09, 0.0435148, 54.9855, 46.023, 4.68169)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.0234882, -0.811931, 0.583281, -0.0326691, 0.583754, 0.811273, -0.99919, 8.01587e-08, -0.0402364, 31.5594, 19.1641, -3.57476)
 
-[node name="Container" type="Control" parent="Camera3D"]
-visible = false
+[node name="StartUI" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Camera3D/StartUI"]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 284.0
+pivot_offset = Vector2(575, 142)
+text = "Tugboat Tumult"
+label_settings = SubResource("LabelSettings_2xl37")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_oj3br")
+
+[node name="Controls" type="Label" parent="Camera3D/StartUI"]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 299.0
+offset_right = 738.0
+offset_bottom = 518.0
+text = "W for forward
+A / D for steering
+
+Any Key to Start"
+label_settings = SubResource("LabelSettings_qwyy4")
+horizontal_alignment = 1
+
+[node name="GameUI" type="Control" parent="Camera3D"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="Camera3D/Container"]
-layout_mode = 2
-offset_left = 392.0
-offset_top = 413.0
-offset_right = 546.0
-offset_bottom = 444.0
-text = "Enable Gravity"
+[node name="Time" type="Control" parent="Camera3D/GameUI"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Button2" type="Button" parent="Camera3D/Container"]
+[node name="Label" type="Label" parent="Camera3D/GameUI/Time"]
+offset_right = 210.0
+offset_bottom = 35.0
+text = "Time Elapsed:"
+label_settings = ExtResource("14_putjk")
+
+[node name="Time" type="Label" parent="Camera3D/GameUI/Time"]
+offset_left = 220.0
+offset_right = 262.0
+offset_bottom = 35.0
+text = "00:00"
+label_settings = ExtResource("14_putjk")
+
+[node name="Damage" type="Control" parent="Camera3D/GameUI"]
+visible = false
+anchors_preset = 0
+offset_top = 35.0
+offset_right = 40.0
+offset_bottom = 75.0
+
+[node name="Label" type="Label" parent="Camera3D/GameUI/Damage"]
 layout_mode = 0
-offset_left = 564.0
-offset_top = 415.0
-offset_right = 718.0
-offset_bottom = 446.0
-text = "Add Rope Segment"
+offset_right = 210.0
+offset_bottom = 35.0
+text = "DAMAGE DONE:"
+label_settings = ExtResource("14_putjk")
 
-[node name="river-intersectionA2" parent="." instance=ExtResource("7_tfdlb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.2339, 0.96656, 0.97076)
+[node name="DamageDone" type="Label" parent="Camera3D/GameUI/Damage"]
+layout_mode = 0
+offset_left = 213.0
+offset_right = 255.0
+offset_bottom = 35.0
+text = "$0"
+label_settings = SubResource("LabelSettings_4qq0w")
 
-[node name="river-intersectionB2" parent="." instance=ExtResource("8_bolh0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.2033, 0.96656, -0.776867)
-
-[node name="river-intersectionC2" parent="." instance=ExtResource("9_8ntxa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0699, 0.96656, -1.11332)
-
-[node name="river-intersectionD2" parent="." instance=ExtResource("10_mldvx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9452, 0.96656, -0.0070343)
-
-[node name="river-intersectionE2" parent="." instance=ExtResource("11_poxws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4536, 0.992653, 0.446671)
-
-[node name="river-intersectionF2" parent="." instance=ExtResource("12_ghdph")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6415, 0.96656, -1.001)
-
-[node name="river-intersectionG2" parent="." instance=ExtResource("13_1q5db")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0481, 0.96656, 1.293)
-
-[node name="river-intersectionH2" parent="." instance=ExtResource("14_xex5d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0969, 0.96656, 1.5134)
-
-[node name="river-straight2" parent="." instance=ExtResource("16_csd61")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3331, 0.96656, 2.66527)
-
-[node name="RiverStartRound" parent="." instance=ExtResource("17_r01bk")]
-transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, 16.5, -4.5, -20.5)
-
-[node name="RiverStraight" parent="." instance=ExtResource("16_mwgp1")]
-transform = Transform3D(-1.31134e-06, 0, 30, 0, 30, 0, -30, 0, -1.31134e-06, 16.5, -4.5, 9.5)
-
-[node name="RiverStraight2" parent="." instance=ExtResource("16_mwgp1")]
-transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, 16.5, -4.5, 39.5)
+[node name="EndUI" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

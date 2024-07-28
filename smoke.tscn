@@ -6,7 +6,7 @@
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_usace"]
 frame_0/texture = ExtResource("2_ii7db")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnuip"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3o25e"]
 transparency = 1
 albedo_texture = SubResource("AnimatedTexture_usace")
 billboard_mode = 3
@@ -15,7 +15,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_ari7a"]
-material = SubResource("StandardMaterial3D_pnuip")
+material = SubResource("StandardMaterial3D_3o25e")
 size = Vector2(2, 2)
 
 [node name="Smoke" type="Node3D"]

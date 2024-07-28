@@ -1,3 +1,4 @@
+class_name OceanLiner
 extends RigidBody3D
 
 var local_collision_points = []
@@ -6,6 +7,8 @@ var smokes = preload("res://smoke.tscn")
 var can_spark = true
 var sparktimer = 1
 var sparktimerleft = sparktimer
+
+signal on_collision
 
 func _ready():
 	connect("body_entered",_on_body_entered)
@@ -23,7 +26,6 @@ func _integrate_forces(state):
 		local_collision_points.push_back(state.get_contact_collider_position(point))
 
 func _on_body_entered(body: Node):
-	print('COLLISION', body)
 	if (can_spark or true) and not body is RopeSegment:
 		can_spark = false
 		var sparkss = 5
@@ -37,3 +39,4 @@ func _on_body_entered(body: Node):
 			var smoke = smokes.instantiate() as Node3D
 			smoke.position = point
 			get_tree().root.add_child(smoke)
+			on_collision.emit()
